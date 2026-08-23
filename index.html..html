@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
+<title>OPUS</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="OPUS">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#090d10">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<style>
+:root{
+  --bg:#090d10;
+  --bg2:#0d1216;
+  --card:#11181d;
+  --card2:#151e24;
+  --card3:#1a242b;
+  --line:rgba(255,255,255,.075);
+  --line2:rgba(255,255,255,.12);
+  --text:#f4f2eb;
+  --muted:#98a0a5;
+  --muted2:#687178;
+  --gold:#d7b66a;
+  --gold2:#f2d28a;
+  --teal:#70c2b3;
+  --blue:#73aee8;
+  --purple:#aa91e8;
+  --rose:#e27a73;
+  --orange:#e6a45f;
+  --green:#72be8d;
+  --shadow:0 20px 60px rgba(0,0,0,.35);
+  --radius:22px;
+  --safe-top:env(safe-area-inset-top,0px);
+  --safe-bottom:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",sans-serif;-webkit-font-smoothing:antialiased;overscroll-behavior:none}
+body{background:
+  radial-gradient(700px 500px at 10% -10%,rgba(215,182,106,.10),transparent 60%),
+  radial-gradient(600px 450px at 110% 20%,rgba(112,194,179,.08),transparent 60%),
+  linear-gradient(180deg,#0c1216 0,#090d10 50%,#080b0d 100%)}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+button:active{transform:scale(.975)}
+input,textarea,select{font-size:16px}
+::-webkit-scrollbar{display:none}
+#app{max-width:620px;margin:0 auto;min-height:100dvh;padding-bottom:calc(98px + var(--safe-bottom))}
+.topbar{position:sticky;top:0;z-index:30;padding:calc(10px + var(--safe-top)) 18px 10px;background:linear-gradient(180deg,rgba(9,13,16,.96),rgba(9,13,16,.83) 74%,transparent);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:11px;min-width:0}
+.brand-mark{width:38px;height:38px;border-radius:13px;background:linear-gradient(145deg,rgba(215,182,106,.23),rgba(112,194,179,.12));border:1px solid rgba(215,182,106,.45);display:grid;place-items:center;box-shadow:inset 0 1px rgba(255,255,255,.06),0 8px 24px rgba(0,0,0,.24)}
+.brand-mark svg{width:22px;height:22px}
+.brand-copy{min-width:0}.brand-name{font-weight:750;letter-spacing:.8px;font-size:16px}.brand-sub{color:var(--muted);font-size:11px;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.circle-btn{width:38px;height:38px;border-radius:13px;border:1px solid var(--line);background:rgba(17,24,29,.82);color:var(--muted);display:grid;place-items:center;box-shadow:inset 0 1px rgba(255,255,255,.03)}
+.circle-btn svg{width:18px;height:18px}
+.view{padding:4px 0 24px;animation:fadeIn .22s ease}
+@keyframes fadeIn{from{opacity:.3;transform:translateY(4px)}to{opacity:1;transform:none}}
+.page-head{padding:12px 20px 14px}.eyebrow{font-size:11px;letter-spacing:1.6px;text-transform:uppercase;color:var(--gold);font-weight:700}.page-title{font-size:34px;line-height:1.08;letter-spacing:-1.2px;font-weight:780;margin:6px 0 4px}.page-sub{font-size:14px;color:var(--muted);line-height:1.45}
+.card{margin:0 18px 14px;background:linear-gradient(160deg,rgba(21,30,36,.98),rgba(15,22,27,.98));border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 14px 38px rgba(0,0,0,.2),inset 0 1px rgba(255,255,255,.025)}
+.hero{padding:18px;position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:220px;height:220px;border-radius:50%;right:-110px;top:-105px;background:radial-gradient(circle,rgba(215,182,106,.16),transparent 68%);pointer-events:none}.hero-top{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;position:relative;z-index:1}.hero-title{font-size:14px;color:var(--muted);font-weight:600}.hero-score{font-size:42px;font-weight:800;letter-spacing:-2px;line-height:1}.hero-score small{font-size:14px;color:var(--muted);letter-spacing:0;font-weight:600}.progress{height:9px;border-radius:999px;background:rgba(255,255,255,.06);overflow:hidden;margin-top:15px}.progress>i{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--teal),var(--gold2));box-shadow:0 0 18px rgba(215,182,106,.28);transition:width .35s ease}.hero-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}.hero-stat{padding:10px 11px;border-radius:15px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.045)}.hero-stat b{display:block;font-size:18px}.hero-stat span{display:block;margin-top:3px;color:var(--muted);font-size:10.5px}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:10px;padding:10px 20px 9px}.section-head h2{margin:0;font-size:19px;letter-spacing:-.3px}.section-head span{font-size:12px;color:var(--muted)}.text-btn{border:none;background:none;color:var(--gold2);padding:6px 0;font-size:13px;font-weight:650}
+.segment{display:flex;margin:0 18px 14px;padding:4px;border-radius:15px;background:rgba(255,255,255,.045);border:1px solid var(--line)}.segment button{flex:1;border:0;background:transparent;color:var(--muted);padding:8px 6px;border-radius:11px;font-size:12px;font-weight:700;transition:.15s}.segment button.active{background:var(--card3);color:var(--text);box-shadow:0 6px 18px rgba(0,0,0,.22),inset 0 1px rgba(255,255,255,.04)}
+.timeline{margin:0 18px 14px;display:flex;flex-direction:column;gap:8px}.time-label{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:11px;font-weight:700;letter-spacing:1.1px;text-transform:uppercase;padding:10px 2px 3px}.time-label:after{content:"";height:1px;flex:1;background:var(--line)}
+.task{display:grid;grid-template-columns:42px 1fr auto;gap:11px;align-items:center;padding:11px 12px;border:1px solid var(--line);background:rgba(17,24,29,.92);border-radius:17px;min-height:66px;transition:.16s}.task.done{border-color:rgba(114,190,141,.18);background:linear-gradient(135deg,rgba(114,190,141,.08),rgba(17,24,29,.92))}.task.skipped{opacity:.58}.task-icon{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;font-size:19px;background:rgba(255,255,255,.045);border:1px solid var(--line)}.task-main{min-width:0}.task-name{font-size:14.5px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.task-meta{font-size:11.5px;color:var(--muted);margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.task-action{min-width:52px;height:38px;padding:0 10px;border-radius:13px;border:1px solid var(--line2);background:rgba(255,255,255,.04);color:var(--text);font-size:11.5px;font-weight:750}.task.done .task-action{background:rgba(114,190,141,.14);border-color:rgba(114,190,141,.35);color:#9de0b4}.task.skipped .task-action{color:var(--muted)}
+.quick-card{padding:16px}.quick-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.quick-metric{padding:12px;border-radius:16px;background:rgba(255,255,255,.035);border:1px solid var(--line);text-align:center}.quick-metric b{font-size:20px}.quick-metric span{display:block;color:var(--muted);font-size:10.5px;margin-top:3px}.quick-note{width:100%;margin-top:10px;background:rgba(255,255,255,.035);border:1px solid var(--line);border-radius:15px;color:var(--text);padding:12px;min-height:70px;resize:none}.range-row{display:grid;grid-template-columns:72px 1fr 30px;gap:10px;align-items:center;margin-top:12px}.range-row label{font-size:12px;color:var(--muted)}.range-row output{font-size:13px;font-weight:750;text-align:right;color:var(--gold2)}input[type=range]{accent-color:var(--gold);width:100%}
+.primary{border:0;border-radius:15px;background:linear-gradient(135deg,var(--gold2),var(--gold));color:#1b1407;font-weight:800;padding:12px 15px;box-shadow:0 10px 24px rgba(215,182,106,.18)}.secondary{border:1px solid var(--line2);border-radius:15px;background:rgba(255,255,255,.04);color:var(--text);font-weight:700;padding:11px 14px}.danger{border:1px solid rgba(226,122,115,.34);border-radius:15px;background:rgba(226,122,115,.10);color:#f3a39d;font-weight:700;padding:11px 14px}.wide{width:100%}
+.search-wrap{padding:0 18px 10px}.search{width:100%;background:rgba(17,24,29,.9);border:1px solid var(--line);color:var(--text);border-radius:16px;padding:12px 14px;outline:none}.search:focus{border-color:rgba(215,182,106,.45)}
+.chips{display:flex;gap:7px;overflow:auto;padding:0 18px 12px}.chip{border:1px solid var(--line);background:rgba(17,24,29,.88);color:var(--muted);padding:8px 11px;border-radius:999px;font-size:11.5px;font-weight:700;white-space:nowrap}.chip.active{background:rgba(215,182,106,.14);border-color:rgba(215,182,106,.32);color:var(--gold2)}
+.library{margin:0 18px 16px;display:grid;grid-template-columns:1fr;gap:10px}.item-card{padding:15px;border-radius:19px;background:linear-gradient(150deg,rgba(20,29,35,.98),rgba(15,22,27,.98));border:1px solid var(--line);position:relative;overflow:hidden}.item-card:before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent,var(--gold))}.item-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.item-title{display:flex;gap:11px;min-width:0}.item-emoji{width:38px;height:38px;border-radius:13px;background:rgba(255,255,255,.045);display:grid;place-items:center;font-size:18px;border:1px solid var(--line)}.item-name{font-size:15px;font-weight:750;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:250px}.item-type{font-size:10.5px;color:var(--muted);margin-top:4px;text-transform:uppercase;letter-spacing:.8px}.pill{display:inline-flex;align-items:center;gap:4px;padding:5px 8px;border-radius:999px;background:rgba(255,255,255,.045);border:1px solid var(--line);font-size:10.5px;color:var(--muted);white-space:nowrap}.pill.low{color:#f4aaa3;border-color:rgba(226,122,115,.25);background:rgba(226,122,115,.08)}.item-row{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}.item-note{font-size:12px;color:var(--muted);line-height:1.45;margin-top:10px}.item-actions{display:flex;gap:7px;margin-top:13px}.item-actions button{flex:1;border-radius:13px;padding:9px;border:1px solid var(--line);background:rgba(255,255,255,.035);color:var(--text);font-size:11.5px;font-weight:700}.item-actions .log{background:rgba(215,182,106,.15);border-color:rgba(215,182,106,.28);color:var(--gold2)}
+.empty{margin:0 18px 16px;padding:28px 20px;text-align:center;border:1px dashed var(--line2);border-radius:20px;background:rgba(17,24,29,.55);color:var(--muted);line-height:1.5;font-size:13px}.empty b{color:var(--text)}.empty .primary{margin-top:14px;width:auto}
+.insight-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin:0 18px 14px}.insight-card{padding:14px;border-radius:18px;background:rgba(17,24,29,.9);border:1px solid var(--line)}.insight-card .k{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}.insight-card .v{font-size:26px;font-weight:800;letter-spacing:-1px;margin-top:4px}.insight-card .s{font-size:10.5px;color:var(--muted);margin-top:2px}
+.chart-card{padding:16px}.chart-head{display:flex;justify-content:space-between;gap:10px;align-items:center}.chart-head h3{margin:0;font-size:15px}.chart-legend{font-size:10.5px;color:var(--muted)}.chart{width:100%;height:120px;margin-top:10px;display:block}.chart-grid{stroke:rgba(255,255,255,.06);stroke-width:1}.chart-line{fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}.chart-dot{stroke:#0d1216;stroke-width:2}
+.pattern{padding:13px 14px;border-top:1px solid var(--line)}.pattern:first-child{border-top:0}.pattern strong{font-size:13px}.pattern p{margin:4px 0 0;color:var(--muted);font-size:11.5px;line-height:1.45}.delta.up{color:#9eddb4}.delta.down{color:#f0a09a}.fineprint{font-size:10.5px;color:var(--muted2);line-height:1.45;margin:8px 18px 16px}
+.stock-row{display:grid;grid-template-columns:1fr auto;gap:10px;padding:12px 0;border-top:1px solid var(--line)}.stock-row:first-child{border-top:0}.stock-name{font-size:13px;font-weight:700}.stock-meta{font-size:11px;color:var(--muted);margin-top:3px}.stock-value{text-align:right;font-size:12px;color:var(--gold2);font-weight:700}
+.journal-compose{padding:15px}.journal-compose textarea{width:100%;min-height:86px;resize:none;border:1px solid var(--line);border-radius:15px;background:rgba(255,255,255,.035);color:var(--text);padding:12px}.compose-actions{display:flex;gap:8px;margin-top:9px}.compose-actions button{flex:1}
+.timeline-entry{margin:0 18px 9px;padding:13px 14px;border:1px solid var(--line);border-radius:17px;background:rgba(17,24,29,.88)}.entry-top{display:flex;justify-content:space-between;gap:10px}.entry-tag{font-size:10px;text-transform:uppercase;letter-spacing:.8px;font-weight:800}.entry-time{font-size:10.5px;color:var(--muted)}.entry-body{font-size:13px;line-height:1.5;margin-top:6px}.entry-note{color:var(--muted)}.entry-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:7px}.mini-btn{border:0;background:none;color:var(--muted);font-size:11px;padding:4px}.mini-btn.danger-text{color:#d88a84}
+.photo-strip{display:flex;gap:10px;overflow:auto;padding:0 18px 14px;scroll-snap-type:x mandatory}.photo{min-width:148px;width:148px;scroll-snap-align:start;background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden}.photo img{width:100%;height:165px;object-fit:cover;display:block;background:#111}.photo-meta{padding:9px}.photo-meta b{font-size:11px}.photo-meta p{font-size:10.5px;color:var(--muted);margin:4px 0 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fab{position:fixed;right:max(20px,calc((100vw - 620px)/2 + 20px));bottom:calc(90px + var(--safe-bottom));z-index:25;width:54px;height:54px;border-radius:18px;border:1px solid rgba(215,182,106,.32);background:linear-gradient(145deg,var(--gold2),var(--gold));color:#1b1407;font-size:28px;font-weight:500;box-shadow:0 18px 38px rgba(0,0,0,.38)}
+.bottom-nav{position:fixed;z-index:40;left:0;right:0;bottom:0;max-width:620px;margin:0 auto;padding:7px 10px calc(8px + var(--safe-bottom));display:grid;grid-template-columns:repeat(4,1fr);gap:3px;background:rgba(12,18,22,.93);border-top:1px solid var(--line);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);box-shadow:0 -14px 40px rgba(0,0,0,.24)}.bottom-nav button{border:0;background:none;color:var(--muted2);display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 3px;border-radius:12px;font-size:9.5px;font-weight:700}.bottom-nav button svg{width:20px;height:20px}.bottom-nav button.active{color:var(--gold2);background:rgba(215,182,106,.06)}
+.install{margin:0 18px 14px;padding:12px 13px;border-radius:16px;border:1px solid rgba(112,194,179,.25);background:rgba(112,194,179,.08);font-size:12px;line-height:1.45;color:#cbe9e3;display:none}.install.show{display:flex;gap:10px;align-items:flex-start}.install button{margin-left:auto;border:0;background:none;color:var(--muted);font-size:18px;padding:0 2px}
+.toast{position:fixed;z-index:100;left:50%;top:calc(12px + var(--safe-top));transform:translate(-50%,-140%);padding:10px 14px;border-radius:999px;background:#f2e4c2;color:#19140b;font-size:12.5px;font-weight:750;box-shadow:var(--shadow);transition:.28s cubic-bezier(.2,.9,.3,1.2);white-space:nowrap}.toast.show{transform:translate(-50%,0)}
+dialog{width:min(620px,100%);max-height:92dvh;margin:auto auto 0;padding:0;border:0;border-radius:26px 26px 0 0;background:var(--card);color:var(--text);box-shadow:0 -20px 70px rgba(0,0,0,.5);overflow:auto}dialog::backdrop{background:rgba(0,0,0,.58);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px)}.sheet{padding:10px 18px calc(20px + var(--safe-bottom))}.handle{width:38px;height:4px;border-radius:999px;background:rgba(255,255,255,.16);margin:2px auto 14px}.sheet h3{margin:0 0 16px;font-size:20px}.field{margin-bottom:13px}.field label{display:block;font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;font-weight:700}.field input,.field textarea,.field select{width:100%;border:1px solid var(--line);background:var(--card2);color:var(--text);border-radius:14px;padding:11px 12px;outline:none}.field textarea{resize:vertical;min-height:70px}.field input:focus,.field textarea:focus,.field select:focus{border-color:rgba(215,182,106,.4)}.two{display:grid;grid-template-columns:1fr 1fr;gap:9px}.three{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.days{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}.day{border:1px solid var(--line);background:var(--card2);color:var(--muted);height:34px;border-radius:10px;font-size:10px;font-weight:750}.day.on{background:rgba(215,182,106,.14);border-color:rgba(215,182,106,.3);color:var(--gold2)}.sheet-actions{display:flex;gap:9px;margin-top:16px}.sheet-actions>*{flex:1}.divider{height:1px;background:var(--line);margin:17px 0}.settings-row{padding:10px 0;border-top:1px solid var(--line)}.settings-row:first-of-type{border-top:0}.settings-row b{font-size:13px}.settings-row p{font-size:11px;color:var(--muted);margin:4px 0 0;line-height:1.45}.settings-buttons{display:flex;gap:8px;margin-top:9px}.settings-buttons button{flex:1;font-size:11.5px;padding:9px 10px}
+.lock{position:fixed;inset:0;z-index:200;background:radial-gradient(500px 380px at 50% 10%,rgba(215,182,106,.10),transparent 65%),#080c0f;display:none;align-items:center;justify-content:center;padding:24px}.lock.show{display:flex}.lock-card{width:min(340px,100%);text-align:center}.lock-logo{width:66px;height:66px;border-radius:22px;margin:0 auto 16px;background:rgba(215,182,106,.12);border:1px solid rgba(215,182,106,.3);display:grid;place-items:center;font-size:30px}.lock h2{font-size:24px;margin:0}.lock p{color:var(--muted);font-size:12px}.pin{width:160px!important;text-align:center;letter-spacing:10px;font-size:24px!important;margin:10px auto!important;display:block;background:var(--card)!important}
+.preview{width:100%;max-height:360px;object-fit:cover;border-radius:18px;border:1px solid var(--line);background:#111}
+@media(min-width:520px){.library{grid-template-columns:1fr 1fr}.item-name{max-width:190px}}
+</style>
+</head>
+<body>
+<div id="app">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 2.8c3.6 3.2 6.1 6.1 6.1 10.1A6.1 6.1 0 1 1 5.9 13c0-4 2.5-6.9 6.1-10.2Z" stroke="#d7b66a" stroke-width="1.5"/><path d="M8.5 14.2c1.8.2 4-.9 5.7-3.2" stroke="#70c2b3" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="15" r="2.1" fill="#d7b66a"/></svg>
+        </div>
+        <div class="brand-copy"><div class="brand-name">OPUS</div><div class="brand-sub" id="brandSub">DIN PERSONLIGE TRACKER</div></div>
+      </div>
+      <button class="circle-btn" id="settingsBtn" aria-label="Indstillinger">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-2.8 2.8-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.6v.1h-4V21a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1L4.2 17l.1-.1a1.7 1.7 0 0 0 .3-1.9A1.7 1.7 0 0 0 3 14H2.9v-4H3a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9L4.2 7 7 4.2l.1.1a1.7 1.7 0 0 0 1.9.3 1.7 1.7 0 0 0 1-1.6v-.1h4V3a1.7 1.7 0 0 0 1 1.6 1.7 1.7 0 0 0 1.9-.3l.1-.1L19.8 7l-.1.1a1.7 1.7 0 0 0-.3 1.9A1.7 1.7 0 0 0 21 10h.1v4H21a1.7 1.7 0 0 0-1.6 1Z"/></svg>
+      </button>
+    </div>
+  </header>
+  <div id="installHint" class="install"><span>📲</span><div><b>Installer OPUS som app</b><br>Åbn i Safari → Del → <b>Føj til hjemmeskærm</b>.</div><button id="hideInstall">×</button></div>
+  <main id="view" class="view"></main>
+</div>
+<button class="fab" id="fab" aria-label="Tilføj">+</button>
+<nav class="bottom-nav" id="nav">
+  <button data-tab="today" class="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 10.5 12 3l9 7.5V21H3Z"/><path d="M9 21v-7h6v7"/></svg><span>I DAG</span></button>
+  <button data-tab="library"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M8 8h8M8 12h8M8 16h5"/></svg><span>BIBLIOTEK</span></button>
+  <button data-tab="insights"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19V9M10 19V5M16 19v-7M22 19V3"/></svg><span>INDBLIK</span></button>
+  <button data-tab="journal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M5 3h14v18H5z"/><path d="M8 7h8M8 11h8M8 15h5"/></svg><span>JOURNAL</span></button>
+</nav>
+<div class="toast" id="toast"></div>
+<div class="lock" id="lockOverlay"><div class="lock-card"><div class="lock-logo">◈</div><h2>OPUS er låst</h2><p>Indtast din 4-cifrede PIN.</p><input class="field pin" id="unlockPin" inputmode="numeric" maxlength="4" type="password" autocomplete="off"><button class="primary wide" id="unlockBtn">Lås op</button><p id="unlockError"></p></div></div>
+
+<dialog id="itemDialog">
+  <form class="sheet" id="itemForm" method="dialog">
+    <div class="handle"></div><h3 id="itemTitle">Tilføj</h3>
+    <div class="two">
+      <div class="field"><label>Kategori</label><select id="itemType"><option value="supplement">Kosttilskud</option><option value="peptide">Peptid</option><option value="skincare">Hudpleje</option><option value="medication">Medicin</option><option value="habit">Vane / rutine</option></select></div>
+      <div class="field"><label>Navn</label><input id="itemName" required placeholder="fx Magnesium"></div>
+    </div>
+    <div class="two">
+      <div class="field"><label>Standarddosis / mængde</label><input id="itemDose" placeholder="fx 400 mg"></div>
+      <div class="field"><label>Tidspunkter</label><input id="itemTimes" placeholder="fx 07:00, 21:00"></div>
+    </div>
+    <div class="field"><label>Dage</label><div class="days" id="dayPicker"></div></div>
+    <div class="field"><label>Noter</label><textarea id="itemNotes" placeholder="Formål, produkt, instruktioner, hudområde osv."></textarea></div>
+    <div class="divider"></div>
+    <div class="field"><label>Lager (valgfrit)</label></div>
+    <div class="three">
+      <div class="field"><label>Nuværende</label><input id="stockCurrent" inputmode="decimal" placeholder="20"></div>
+      <div class="field"><label>Enhed</label><input id="stockUnit" placeholder="mg / stk"></div>
+      <div class="field"><label>Pr. brug</label><input id="stockPerUse" inputmode="decimal" placeholder="2"></div>
+    </div>
+    <div class="field"><label>Advar mig under</label><input id="stockLow" inputmode="decimal" placeholder="fx 5"></div>
+    <div class="sheet-actions"><button type="button" class="secondary" id="itemCancel">Annullér</button><button type="submit" class="primary">Gem</button></div>
+  </form>
+</dialog>
+
+<dialog id="logDialog">
+  <form class="sheet" id="logForm" method="dialog">
+    <div class="handle"></div><h3 id="logTitle">Registrér</h3>
+    <div class="two"><div class="field"><label>Tid</label><input type="time" id="logTime"></div><div class="field"><label>Dosis / mængde</label><input id="logDose"></div></div>
+    <div class="field"><label>Note</label><textarea id="logNote" placeholder="Hvordan gik det? Eventuelle observationer..."></textarea></div>
+    <div class="sheet-actions"><button type="button" class="secondary" id="logSkip">Spring over</button><button type="submit" class="primary">Registrér</button></div>
+    <div class="sheet-actions"><button type="button" class="secondary" id="logCancel">Annullér</button></div>
+  </form>
+</dialog>
+
+<dialog id="detailDialog"><div class="sheet"><div class="handle"></div><div id="detailContent"></div></div></dialog>
+
+<dialog id="settingsDialog">
+  <div class="sheet"><div class="handle"></div><h3>Indstillinger</h3>
+    <div class="field"><label>Dit navn</label><input id="userName" placeholder="Valgfrit"></div>
+    <button class="primary wide" id="saveName">Gem navn</button>
+    <div class="divider"></div>
+    <div class="settings-row"><b>PIN-lås</b><p>Låser appen ved genåbning. PIN er lokal adgangsbeskyttelse, ikke kryptering.</p><div class="settings-buttons"><input id="pinSet" class="search" inputmode="numeric" maxlength="4" type="password" placeholder="4 cifre"><button class="secondary" id="setPin">Aktivér / ændr</button><button class="secondary" id="removePin">Fjern</button></div></div>
+    <div class="settings-row"><b>Backup</b><p>Eksportér alle data og progress-fotos som én JSON-fil. Import kan gendanne appen på en anden enhed.</p><div class="settings-buttons"><button class="secondary" id="exportBtn">Eksportér</button><button class="secondary" id="importBtn">Importér</button><input id="importFile" type="file" accept="application/json" hidden></div></div>
+    <div class="settings-row"><b>Data</b><p>Alt gemmes lokalt i din browser på denne installation.</p><div class="settings-buttons"><button class="danger" id="resetBtn">Nulstil alt</button></div></div>
+    <div class="sheet-actions"><button class="secondary" id="settingsClose">Luk</button></div>
+  </div>
+</dialog>
+
+<dialog id="photoDialog"><div class="sheet"><div class="handle"></div><h3>Nyt progress-foto</h3><img class="preview" id="photoPreview" alt="Preview"><div class="field" style="margin-top:12px"><label>Hudscore 1–10</label><input type="range" min="1" max="10" value="5" id="photoSkin"><div style="text-align:right;color:var(--gold2);font-weight:700" id="photoSkinOut">5</div></div><div class="field"><label>Note</label><textarea id="photoNote" placeholder="fx lys, område, produktændring..."></textarea></div><div class="sheet-actions"><button class="secondary" id="photoCancel">Annullér</button><button class="primary" id="photoSave">Gem foto</button></div></div></dialog>
+<input id="photoInput" type="file" accept="image/*" capture="user" hidden>
+
+<script>
+(()=>{
+'use strict';
+const STORAGE_KEY='opus-v2-data';
+const LEGACY_KEY='opus-data';
+const $=(s,e=document)=>e.querySelector(s);
+const $$=(s,e=document)=>Array.from(e.querySelectorAll(s));
+const DAY_NAMES=['S','M','T','O','T','F','L'];
+const DAY_FULL=['Søndag','Mandag','Tirsdag','Onsdag','Torsdag','Fredag','Lørdag'];
+const DAY_ICS=['SU','MO','TU','WE','TH','FR','SA'];
+const TYPES={
+  supplement:{label:'Kosttilskud',icon:'◉',color:'var(--green)',hex:'#72be8d'},
+  peptide:{label:'Peptid',icon:'◇',color:'var(--teal)',hex:'#70c2b3'},
+  skincare:{label:'Hudpleje',icon:'✦',color:'var(--gold)',hex:'#d7b66a'},
+  medication:{label:'Medicin',icon:'＋',color:'var(--blue)',hex:'#73aee8'},
+  habit:{label:'Vane',icon:'✓',color:'var(--purple)',hex:'#aa91e8'},
+  checkin:{label:'Check-in',icon:'◎',color:'var(--orange)',hex:'#e6a45f'},
+  note:{label:'Note',icon:'≡',color:'var(--muted)',hex:'#98a0a5'}
+};
+const XP_BY_TYPE={supplement:6,peptide:8,skincare:6,medication:6,habit:5,checkin:8,note:4};
+let state=defaultState();
+let activeTab='today';
+let libraryFilter='all';
+let insightDays=7;
+let itemCtx={id:null};
+let logCtx={item:null,scheduleTime:null};
+let pendingPhoto=null;
+let hiddenAt=0;
+let toastTimer=null;
+
+function defaultState(){return {version:2,userName:'',settings:{hideInstall:false,pinHash:null},profile:{xp:0},items:[],entries:[],checkins:[],createdAt:Date.now()};}
+function uid(){return Math.random().toString(36).slice(2,9)+Date.now().toString(36).slice(-5)}
+function localDateKey(ts=Date.now()){const d=new Date(ts);const y=d.getFullYear();const m=String(d.getMonth()+1).padStart(2,'0');const day=String(d.getDate()).padStart(2,'0');return `${y}-${m}-${day}`}
+function startOfDay(date=new Date()){return new Date(date.getFullYear(),date.getMonth(),date.getDate()).getTime()}
+function daysAgo(n){const d=new Date();d.setDate(d.getDate()-n);return d}
+function fmtDate(ts){return new Date(ts).toLocaleDateString('da-DK',{day:'numeric',month:'short'})}
+function fmtDateLong(ts=Date.now()){return new Date(ts).toLocaleDateString('da-DK',{weekday:'long',day:'numeric',month:'long'})}
+function fmtTime(ts){return new Date(ts).toLocaleTimeString('da-DK',{hour:'2-digit',minute:'2-digit'})}
+function fmtDateTime(ts){return `${fmtDate(ts)} · ${fmtTime(ts)}`}
+function esc(v=''){return String(v).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+function number(v){if(v===null||v===undefined||v==='')return null;const n=parseFloat(String(v).replace(',','.'));return Number.isFinite(n)?n:null}
+function clamp(n,min,max){return Math.min(max,Math.max(min,n))}
+function avg(a){const v=a.filter(x=>Number.isFinite(x));return v.length?v.reduce((s,x)=>s+x,0)/v.length:null}
+function parseTimes(raw){return [...new Set(String(raw||'').split(/[;,\s]+/).map(s=>s.trim()).filter(s=>/^([01]\d|2[0-3]):[0-5]\d$/.test(s)))].sort()}
+function scheduleText(item){const days=item.days?.length===7?'Dagligt':(item.days||[]).map(d=>DAY_FULL[d].slice(0,3)).join(', ')||'Ingen faste dage';const times=item.times?.length?item.times.join(' · '):'Valgfrit tidspunkt';return `${days} · ${times}`}
+function typeMeta(type){return TYPES[type]||TYPES.habit}
+function entryDate(e){return localDateKey(e.ts)}
+function today(){return localDateKey()}
+function hasActivityOn(dateKey){return state.entries.some(e=>entryDate(e)===dateKey)||state.checkins.some(c=>localDateKey(c.ts)===dateKey)}
+function computeStreak(){let s=0;let d=new Date();if(!hasActivityOn(localDateKey(d))){d.setDate(d.getDate()-1)}while(hasActivityOn(localDateKey(d))){s++;d.setDate(d.getDate()-1)}return s}
+function levelInfo(){let xp=state.profile.xp||0,l=1,need=120;while(xp>=need){xp-=need;l++;need=120+(l-1)*70}return {level:l,into:xp,need,total:state.profile.xp||0}}
+function addXP(type,amount=null){state.profile.xp=(state.profile.xp||0)+(amount??(XP_BY_TYPE[type]||0))}
+
+function normalizeState(raw){
+  const base=defaultState();
+  if(!raw||typeof raw!=='object')return base;
+  if(raw.version===2&&Array.isArray(raw.items)){
+    return {...base,...raw,settings:{...base.settings,...(raw.settings||{})},profile:{...base.profile,...(raw.profile||{})},items:raw.items||[],entries:raw.entries||[],checkins:raw.checkins||[]};
+  }
+  // migration from original OPUS
+  const out=base;out.userName=raw.charName||'';out.profile.xp=raw.profile?.xp||0;
+  const map={medicin:'medication',peptider:'peptide',bad:'habit',skincare:'skincare',rutine:'habit'};
+  Object.entries(raw.items||{}).forEach(([oldType,list])=>(list||[]).forEach(old=>{
+    const meta=(old.meta||'').toLowerCase();let times=[];
+    if(meta.includes('morgen'))times=['08:00'];else if(meta.includes('middag')||meta.includes('frokost'))times=['12:00'];else if(meta.includes('aften')||meta.includes('nat'))times=['20:00'];
+    out.items.push({id:old.id||uid(),type:map[oldType]||'habit',name:old.name||'Uden navn',dose:(oldType==='medicin'||oldType==='peptider')?(old.meta||''):'',times,days:[0,1,2,3,4,5,6],notes:(oldType==='medicin'||oldType==='peptider')?'':(old.meta||''),createdAt:Date.now()-30*86400000,stockCurrent:null,stockUnit:'',stockPerUse:null,stockLow:null});
+  }));
+  (raw.entries||[]).forEach(e=>out.entries.push({id:e.id||uid(),itemId:e.itemId||null,itemName:e.itemName||'',type:map[e.type]||e.type||'note',ts:e.ts||Date.now(),dose:e.value??'',note:e.note||'',status:'taken',scheduleTime:null,stockDelta:0}));
+  return out;
+}
+async function storageGet(){
+  try{const v=localStorage.getItem(STORAGE_KEY);if(v)return JSON.parse(v)}catch(e){}
+  try{if(window.storage?.get){const r=await window.storage.get(LEGACY_KEY,false);if(r?.value)return JSON.parse(r.value)}}catch(e){}
+  try{const legacy=localStorage.getItem(LEGACY_KEY);if(legacy)return JSON.parse(legacy)}catch(e){}
+  return null;
+}
+function save(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state))}catch(e){console.error(e);toast('Kunne ikke gemme lokalt')}}
+async function load(){state=normalizeState(await storageGet());save()}
+function toast(msg){const el=$('#toast');el.textContent=msg;el.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('show'),1700)}
+
+function todayTasks(date=new Date()){
+  const dow=date.getDay(),key=localDateKey(date),dayStart=startOfDay(date);
+  return state.items.filter(i=>(i.createdAt||0)<=dayStart+86399999&&(i.days||[]).includes(dow)).flatMap(item=>{
+    const times=item.times?.length?item.times:[null];
+    return times.map(time=>({item,time,key}));
+  }).sort((a,b)=>String(a.time||'99:99').localeCompare(String(b.time||'99:99')));
+}
+function statusForTask(task,dateKey=today()){
+  const matches=state.entries.filter(e=>e.itemId===task.item.id&&entryDate(e)===dateKey&&((task.time===null&&!e.scheduleTime)||e.scheduleTime===task.time));
+  if(matches.some(e=>e.status==='taken'))return 'taken';
+  if(matches.some(e=>e.status==='skipped'))return 'skipped';
+  return 'pending';
+}
+function completionForDate(date=new Date()){
+  const tasks=todayTasks(date);if(!tasks.length)return {total:0,taken:0,skipped:0,pct:0};const key=localDateKey(date);let taken=0,skipped=0;tasks.forEach(t=>{const s=statusForTask(t,key);if(s==='taken')taken++;if(s==='skipped')skipped++});return {total:tasks.length,taken,skipped,pct:Math.round(taken/tasks.length*100)};
+}
+function taskBucket(time){if(!time)return 'any';const h=parseInt(time);if(h<11)return 'morning';if(h<17)return 'day';return 'evening'}
+function bucketLabel(b){return b==='morning'?'🌅 Morgen':b==='day'?'☀️ Dag':b==='evening'?'🌙 Aften':'✦ Når det passer'}
+function lastEntryForItem(id){return state.entries.find(e=>e.itemId===id&&e.status==='taken')||null}
+function stockInfo(item){
+  const cur=number(item.stockCurrent),per=number(item.stockPerUse),low=number(item.stockLow);if(cur===null)return null;
+  const uses=(item.days?.length||0)*Math.max(1,item.times?.length||1);const perDay=per&&uses?per*uses/7:null;const daysLeft=perDay?Math.floor(cur/perDay):null;return {cur,unit:item.stockUnit||'',low,daysLeft,isLow:low!==null&&cur<=low};
+}
+function filterEntriesByDays(days){const since=startOfDay(daysAgo(days-1));return state.entries.filter(e=>e.ts>=since)}
+function checkinForDate(key){return state.checkins.find(c=>localDateKey(c.ts)===key)||null}
+
+function renderShell(){
+  $$('#nav button').forEach(b=>b.classList.toggle('active',b.dataset.tab===activeTab));
+  $('#fab').style.display=activeTab==='library'?'block':'none';
+  const name=state.userName?` · ${state.userName}`:'';$('#brandSub').textContent=`DIN PERSONLIGE TRACKER${name}`;
+  if(activeTab==='today')renderToday();else if(activeTab==='library')renderLibrary();else if(activeTab==='insights')renderInsights();else renderJournal();
+  const v=$('#view');v.style.animation='none';void v.offsetWidth;v.style.animation='';
+}
+
+function renderToday(){
+  const tasks=todayTasks();const comp=completionForDate();const streak=computeStreak();const li=levelInfo();const done=comp.taken;
+  const buckets={morning:[],day:[],evening:[],any:[]};tasks.forEach(t=>buckets[taskBucket(t.time)].push(t));
+  const sections=Object.entries(buckets).filter(([,list])=>list.length).map(([b,list])=>`<div class="time-label">${bucketLabel(b)}</div>${list.map(taskHTML).join('')}`).join('');
+  const c=checkinForDate(today());
+  const firstName=state.userName?`, ${esc(state.userName.split(' ')[0])}`:'';
+  $('#view').innerHTML=`
+    <div class="page-head"><div class="eyebrow">${esc(fmtDateLong()).toUpperCase()}</div><div class="page-title">God dag${firstName}</div><div class="page-sub">Alt planlagt, logget og målt ét sted.</div></div>
+    <div class="card hero"><div class="hero-top"><div><div class="hero-title">Dagens gennemførelse</div><div class="hero-score">${comp.pct}<small>%</small></div></div><span class="pill">Lv ${li.level} · ${li.into}/${li.need} XP</span></div><div class="progress"><i style="width:${comp.pct}%"></i></div><div class="hero-grid"><div class="hero-stat"><b>${done}/${comp.total}</b><span>taget</span></div><div class="hero-stat"><b>${streak}</b><span>dages streak</span></div><div class="hero-stat"><b>${state.entries.filter(e=>entryDate(e)===today()).length}</b><span>logs i dag</span></div></div></div>
+    <div class="section-head"><h2>I dag</h2><span>${comp.total?`${comp.total} planlagte`:'ingen faste punkter'}</span></div>
+    ${tasks.length?`<div class="timeline">${sections}</div>`:`<div class="empty"><b>Din dag er tom.</b><br>Tilføj kosttilskud, hudpleje, peptider eller vaner og vælg dage/tider.<br><button class="primary" id="todayAdd">Tilføj første</button></div>`}
+    <div class="section-head"><h2>Daglig check-in</h2><span>1–10</span></div>
+    <div class="card quick-card">
+      ${rangeHTML('mood','Humør',c?.mood??5)}${rangeHTML('energy','Energi',c?.energy??5)}${rangeHTML('skin','Hud',c?.skin??5)}
+      <textarea class="quick-note" id="checkNote" placeholder="Kort note om dagen...">${esc(c?.note||'')}</textarea>
+      <button class="primary wide" id="saveCheckin" style="margin-top:10px">${c?'Opdatér check-in':'Gem check-in'}</button>
+    </div>
+    ${lowStockHTML(true)}
+  `;
+  $('#todayAdd')?.addEventListener('click',()=>openItem());
+  $$('.task').forEach(el=>el.addEventListener('click',e=>{if(e.target.closest('button'))return;const id=el.dataset.id;const item=state.items.find(i=>i.id===id);openDetail(item)}));
+  $$('.task-action').forEach(btn=>btn.addEventListener('click',()=>{const item=state.items.find(i=>i.id===btn.dataset.id);const time=btn.dataset.time||null;const s=btn.dataset.status;if(s==='taken'||s==='skipped')undoTask(item,time);else openLog(item,time)}));
+  ['mood','energy','skin'].forEach(k=>{$(`#${k}Range`).addEventListener('input',e=>$(`#${k}Out`).textContent=e.target.value)});
+  $('#saveCheckin').addEventListener('click',saveCheckin);
+}
+function taskHTML(task){const s=statusForTask(task);const m=typeMeta(task.item.type);const stock=stockInfo(task.item);const stockText=stock&&stock.isLow?` · Lavt lager: ${stock.cur}${stock.unit?' '+stock.unit:''}`:'';return `<div class="task ${s==='taken'?'done':s==='skipped'?'skipped':''}" data-id="${task.item.id}"><div class="task-icon" style="color:${m.color}">${m.icon}</div><div class="task-main"><div class="task-name">${esc(task.item.name)}</div><div class="task-meta">${task.time||'Når det passer'}${task.item.dose?` · ${esc(task.item.dose)}`:''}${stockText}</div></div><button class="task-action" data-id="${task.item.id}" data-time="${task.time||''}" data-status="${s}">${s==='taken'?'✓ Taget':s==='skipped'?'Sprunget':'Log'}</button></div>`}
+function rangeHTML(id,label,val){return `<div class="range-row"><label>${label}</label><input type="range" min="1" max="10" value="${val}" id="${id}Range"><output id="${id}Out">${val}</output></div>`}
+function saveCheckin(){const key=today();let c=checkinForDate(key);const data={mood:+$('#moodRange').value,energy:+$('#energyRange').value,skin:+$('#skinRange').value,note:$('#checkNote').value.trim()};if(c){Object.assign(c,data,{ts:Date.now()});toast('Check-in opdateret')}else{state.checkins.unshift({id:uid(),ts:Date.now(),...data});addXP('checkin');toast('+8 XP · check-in gemt')}save();renderShell()}
+
+function renderLibrary(){
+  const q='';
+  $('#view').innerHTML=`<div class="page-head"><div class="eyebrow">BIBLIOTEK</div><div class="page-title">Din stack</div><div class="page-sub">Produkter, doser, lager, rutiner og historik.</div></div><div class="search-wrap"><input class="search" id="libSearch" placeholder="Søg i dine ting..."></div><div class="chips" id="filterChips">${[['all','Alle'],['supplement','Tilskud'],['peptide','Peptider'],['skincare','Hud'],['medication','Medicin'],['habit','Vaner']].map(([k,l])=>`<button class="chip ${libraryFilter===k?'active':''}" data-filter="${k}">${l}</button>`).join('')}</div><div id="libraryList"></div>`;
+  const rerenderList=()=>{
+    const query=$('#libSearch').value.trim().toLowerCase();const list=state.items.filter(i=>(libraryFilter==='all'||i.type===libraryFilter)&&(!query||`${i.name} ${i.notes||''} ${i.dose||''}`.toLowerCase().includes(query)));
+    $('#libraryList').innerHTML=list.length?`<div class="library">${list.map(itemCardHTML).join('')}</div>`:`<div class="empty"><b>Ingen match.</b><br>Tryk + for at tilføje noget nyt.</div>`;
+    $$('.item-card').forEach(c=>c.addEventListener('click',e=>{if(e.target.closest('button'))return;openDetail(state.items.find(i=>i.id===c.dataset.id))}));
+    $$('[data-quicklog]').forEach(b=>b.addEventListener('click',()=>openLog(state.items.find(i=>i.id===b.dataset.quicklog),null)));
+    $$('[data-edititem]').forEach(b=>b.addEventListener('click',()=>openItem(state.items.find(i=>i.id===b.dataset.edititem))));
+  };
+  $('#libSearch').addEventListener('input',rerenderList);$$('[data-filter]').forEach(b=>b.addEventListener('click',()=>{libraryFilter=b.dataset.filter;renderLibrary()}));rerenderList();
+}
+function itemCardHTML(item){const m=typeMeta(item.type),stock=stockInfo(item),last=lastEntryForItem(item.id);return `<div class="item-card" data-id="${item.id}" style="--accent:${m.hex}"><div class="item-top"><div class="item-title"><div class="item-emoji" style="color:${m.color}">${m.icon}</div><div><div class="item-name">${esc(item.name)}</div><div class="item-type">${m.label}</div></div></div>${stock?`<span class="pill ${stock.isLow?'low':''}">${stock.cur}${stock.unit?' '+esc(stock.unit):''}</span>`:''}</div><div class="item-row">${item.dose?`<span class="pill">${esc(item.dose)}</span>`:''}<span class="pill">${esc(scheduleText(item))}</span>${stock&&stock.daysLeft!==null?`<span class="pill ${stock.isLow?'low':''}">~${stock.daysLeft} dage lager</span>`:''}</div>${item.notes?`<div class="item-note">${esc(item.notes)}</div>`:''}<div class="item-row"><span class="pill">${last?`Sidst ${fmtDate(last.ts)}`:'Aldrig logget'}</span></div><div class="item-actions"><button class="log" data-quicklog="${item.id}">+ Log</button><button data-edititem="${item.id}">Redigér</button></div></div>`}
+
+function renderInsights(){
+  const adherence=adherenceStats(insightDays);const checks=state.checkins.filter(c=>c.ts>=startOfDay(daysAgo(insightDays-1)));const mood=avg(checks.map(c=>c.mood)),energy=avg(checks.map(c=>c.energy)),skin=avg(checks.map(c=>c.skin));const patterns=computePatterns(insightDays);
+  $('#view').innerHTML=`<div class="page-head"><div class="eyebrow">INDBLIK</div><div class="page-title">Se mønstrene</div><div class="page-sub">Tendenser, konsistens og lager – uden at blande observation sammen med årsag.</div></div><div class="segment"><button class="${insightDays===7?'active':''}" data-days="7">7 dage</button><button class="${insightDays===30?'active':''}" data-days="30">30 dage</button><button class="${insightDays===90?'active':''}" data-days="90">90 dage</button></div><div class="insight-grid"><div class="insight-card"><div class="k">Adherence</div><div class="v">${adherence.pct}%</div><div class="s">${adherence.taken}/${adherence.scheduled} planlagte</div></div><div class="insight-card"><div class="k">Streak</div><div class="v">${computeStreak()}</div><div class="s">aktive dage i træk</div></div><div class="insight-card"><div class="k">Energi ⌀</div><div class="v">${energy===null?'–':energy.toFixed(1)}</div><div class="s">${checks.length} check-ins</div></div><div class="insight-card"><div class="k">Hud ⌀</div><div class="v">${skin===null?'–':skin.toFixed(1)}</div><div class="s">humør ${mood===null?'–':mood.toFixed(1)}</div></div></div>${chartCardHTML(checks,insightDays)}<div class="section-head"><h2>Mønstre</h2><span>observationer</span></div><div class="card">${patterns.length?patterns.slice(0,6).map(patternHTML).join(''):`<div class="pattern"><strong>Ikke nok data endnu</strong><p>Log i mindst nogle dage sammen med check-ins, så kan OPUS sammenligne dage med og uden et bestemt produkt eller en vane.</p></div>`}</div><div class="fineprint">Mønstrene er simple sammenligninger i dine egne data og viser ikke, at et produkt eller en rutine er årsagen til ændringer.</div>${lowStockHTML(false)}<div class="section-head"><h2>Progress-fotos</h2><button class="text-btn" id="addPhotoBtn">+ Foto</button></div><div id="photosArea"></div>`;
+  $$('[data-days]').forEach(b=>b.addEventListener('click',()=>{insightDays=+b.dataset.days;renderInsights()}));$('#addPhotoBtn').addEventListener('click',()=>$('#photoInput').click());renderPhotos();
+}
+function adherenceStats(days){let scheduled=0,taken=0;for(let i=0;i<days;i++){const d=daysAgo(i),key=localDateKey(d);todayTasks(d).forEach(t=>{scheduled++;if(statusForTask(t,key)==='taken')taken++})}return {scheduled,taken,pct:scheduled?Math.round(taken/scheduled*100):0}}
+function chartCardHTML(checks,days){
+  const series=[];for(let i=days-1;i>=0;i--){const key=localDateKey(daysAgo(i));const c=checks.find(x=>localDateKey(x.ts)===key);series.push(c||null)}
+  const w=320,h=104,pad=10;const pts=(key)=>series.map((c,i)=>c?`${pad+i*(w-2*pad)/Math.max(1,series.length-1)},${h-pad-(c[key]-1)/9*(h-2*pad)}`:null);
+  const pathSegments=(arr)=>{let segs=[],cur=[];arr.forEach(p=>{if(p)cur.push(p);else if(cur.length){segs.push(cur);cur=[]}});if(cur.length)segs.push(cur);return segs.map(s=>`<polyline points="${s.join(' ')}"/>`).join('')};
+  return `<div class="card chart-card"><div class="chart-head"><h3>Daglig udvikling</h3><div class="chart-legend"><span style="color:var(--orange)">● Humør</span> · <span style="color:var(--teal)">● Energi</span> · <span style="color:var(--gold)">● Hud</span></div></div><svg class="chart" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none"><line class="chart-grid" x1="${pad}" y1="${h/2}" x2="${w-pad}" y2="${h/2}"/><line class="chart-grid" x1="${pad}" y1="${pad}" x2="${w-pad}" y2="${pad}"/><line class="chart-grid" x1="${pad}" y1="${h-pad}" x2="${w-pad}" y2="${h-pad}"/><g class="chart-line" stroke="var(--orange)">${pathSegments(pts('mood'))}</g><g class="chart-line" stroke="var(--teal)">${pathSegments(pts('energy'))}</g><g class="chart-line" stroke="var(--gold)">${pathSegments(pts('skin'))}</g></svg></div>`
+}
+function computePatterns(days){
+  const since=startOfDay(daysAgo(days-1));const checks=state.checkins.filter(c=>c.ts>=since);if(checks.length<4)return [];
+  const out=[];state.items.forEach(item=>{
+    const takenDates=new Set(state.entries.filter(e=>e.itemId===item.id&&e.status==='taken'&&e.ts>=since).map(entryDate));
+    if(takenDates.size<2)return;
+    ['energy','mood','skin'].forEach(metric=>{
+      const withVals=checks.filter(c=>takenDates.has(localDateKey(c.ts))).map(c=>c[metric]);const withoutVals=checks.filter(c=>!takenDates.has(localDateKey(c.ts))).map(c=>c[metric]);
+      if(withVals.length<2||withoutVals.length<2)return;const a=avg(withVals),b=avg(withoutVals),delta=a-b;if(Math.abs(delta)<.35)return;out.push({item,metric,delta,a,b,n:withVals.length});
+    });
+  });return out.sort((a,b)=>Math.abs(b.delta)-Math.abs(a.delta));
+}
+function patternHTML(p){const label={energy:'Energi',mood:'Humør',skin:'Hud'}[p.metric];const dir=p.delta>0?'højere':'lavere';return `<div class="pattern"><strong>${esc(p.item.name)} · ${label}</strong><p>${label} var <span class="delta ${p.delta>0?'up':'down'}">${Math.abs(p.delta).toFixed(1)} point ${dir}</span> på dage, hvor du loggede ${esc(p.item.name)} (${p.n} sammenlignelige dage).</p></div>`}
+function lowStockHTML(compact){const lows=state.items.map(i=>({item:i,stock:stockInfo(i)})).filter(x=>x.stock&&x.stock.isLow);if(!lows.length)return '';return `<div class="section-head"><h2>Lavt lager</h2><span>${lows.length}</span></div><div class="card" style="padding:0 15px">${lows.slice(0,compact?3:20).map(({item,stock})=>`<div class="stock-row"><div><div class="stock-name">${esc(item.name)}</div><div class="stock-meta">${typeMeta(item.type).label}${stock.daysLeft!==null?` · ca. ${stock.daysLeft} dage tilbage`:''}</div></div><div class="stock-value">${stock.cur}${stock.unit?' '+esc(stock.unit):''}</div></div>`).join('')}</div>`}
+
+function renderJournal(){
+  $('#view').innerHTML=`<div class="page-head"><div class="eyebrow">JOURNAL</div><div class="page-title">Din historik</div><div class="page-sub">Noter, doser, rutiner, spring-over og check-ins i én tidslinje.</div></div><div class="card journal-compose"><textarea id="journalNote" placeholder="Skriv en note..."></textarea><div class="compose-actions"><button class="primary" id="saveJournal">Gem note</button><button class="secondary" id="journalPhoto">Tilføj foto</button></div></div><div class="search-wrap"><input class="search" id="journalSearch" placeholder="Søg i historikken..."></div><div class="section-head"><h2>Historik</h2><span id="historyCount"></span></div><div id="journalList"></div>`;
+  $('#saveJournal').addEventListener('click',()=>{const note=$('#journalNote').value.trim();if(!note)return toast('Skriv en note først');state.entries.unshift({id:uid(),type:'note',ts:Date.now(),note,status:'taken'});addXP('note');save();toast('Note gemt');renderJournal()});
+  $('#journalPhoto').addEventListener('click',()=>$('#photoInput').click());$('#journalSearch').addEventListener('input',renderJournalList);renderJournalList();
+}
+function renderJournalList(){const q=$('#journalSearch').value.trim().toLowerCase();const unified=[...state.entries.map(e=>({kind:'entry',ts:e.ts,data:e})),...state.checkins.map(c=>({kind:'checkin',ts:c.ts,data:c}))].sort((a,b)=>b.ts-a.ts).filter(x=>!q||journalText(x).toLowerCase().includes(q));$('#historyCount').textContent=`${unified.length} poster`;$('#journalList').innerHTML=unified.length?unified.map(journalHTML).join(''):`<div class="empty">Ingen historik endnu.</div>`;$$('[data-delentry]').forEach(b=>b.addEventListener('click',()=>deleteEntry(b.dataset.delentry)));$$('[data-delcheck]').forEach(b=>b.addEventListener('click',()=>{state.checkins=state.checkins.filter(c=>c.id!==b.dataset.delcheck);save();renderJournal()}))}
+function journalText(x){if(x.kind==='checkin')return `check-in humør ${x.data.mood} energi ${x.data.energy} hud ${x.data.skin} ${x.data.note||''}`;const e=x.data;return `${typeMeta(e.type).label} ${e.itemName||''} ${e.dose||''} ${e.note||''} ${e.status||''}`}
+function journalHTML(x){if(x.kind==='checkin'){const c=x.data;return `<div class="timeline-entry"><div class="entry-top"><span class="entry-tag" style="color:var(--orange)">CHECK-IN</span><span class="entry-time">${fmtDateTime(c.ts)}</span></div><div class="entry-body">Humør <b>${c.mood}/10</b> · Energi <b>${c.energy}/10</b> · Hud <b>${c.skin}/10</b>${c.note?`<div class="entry-note">${esc(c.note)}</div>`:''}</div><div class="entry-actions"><button class="mini-btn danger-text" data-delcheck="${c.id}">Slet</button></div></div>`}const e=x.data,m=typeMeta(e.type);return `<div class="timeline-entry"><div class="entry-top"><span class="entry-tag" style="color:${m.color}">${m.label}${e.status==='skipped'?' · SPRUNGET':''}</span><span class="entry-time">${fmtDateTime(e.ts)}</span></div><div class="entry-body">${e.itemName?`<b>${esc(e.itemName)}</b>${e.dose?` · ${esc(e.dose)}`:''}`:''}${e.note?`<div class="entry-note">${esc(e.note)}</div>`:''}</div><div class="entry-actions"><button class="mini-btn danger-text" data-delentry="${e.id}">Slet</button></div></div>`}
+
+function openItem(existing=null){
+  itemCtx={id:existing?.id||null};$('#itemTitle').textContent=existing?'Redigér':'Tilføj';$('#itemType').value=existing?.type||'supplement';$('#itemName').value=existing?.name||'';$('#itemDose').value=existing?.dose||'';$('#itemTimes').value=(existing?.times||[]).join(', ');$('#itemNotes').value=existing?.notes||'';$('#stockCurrent').value=existing?.stockCurrent??'';$('#stockUnit').value=existing?.stockUnit||'';$('#stockPerUse').value=existing?.stockPerUse??'';$('#stockLow').value=existing?.stockLow??'';renderDayPicker(existing?.days||[0,1,2,3,4,5,6]);$('#itemDialog').showModal();setTimeout(()=>$('#itemName').focus(),80)
+}
+function renderDayPicker(selected){$('#dayPicker').innerHTML=DAY_NAMES.map((d,i)=>`<button type="button" class="day ${selected.includes(i)?'on':''}" data-day="${i}">${d}</button>`).join('');$$('[data-day]').forEach(b=>b.addEventListener('click',()=>b.classList.toggle('on')))}
+$('#itemForm').addEventListener('submit',e=>{e.preventDefault();const name=$('#itemName').value.trim();if(!name)return;const days=$$('[data-day].on').map(b=>+b.dataset.day);if(!days.length)return toast('Vælg mindst én dag');const data={type:$('#itemType').value,name,dose:$('#itemDose').value.trim(),times:parseTimes($('#itemTimes').value),days,notes:$('#itemNotes').value.trim(),stockCurrent:number($('#stockCurrent').value),stockUnit:$('#stockUnit').value.trim(),stockPerUse:number($('#stockPerUse').value),stockLow:number($('#stockLow').value)};if(itemCtx.id){const it=state.items.find(i=>i.id===itemCtx.id);Object.assign(it,data);toast('Opdateret')}else{state.items.push({id:uid(),createdAt:Date.now(),...data});toast('Tilføjet')}save();$('#itemDialog').close();renderShell()});
+$('#itemCancel').addEventListener('click',()=>$('#itemDialog').close());
+$('#fab').addEventListener('click',()=>openItem());
+
+function openLog(item,scheduleTime=null){logCtx={item,scheduleTime};$('#logTitle').textContent=`Log ${item.name}`;$('#logDose').value=item.dose||'';$('#logNote').value='';$('#logTime').value=new Date().toTimeString().slice(0,5);$('#logDialog').showModal()}
+function commitLog(status){const {item,scheduleTime}=logCtx;if(!item)return;const key=today();const time=$('#logTime').value||new Date().toTimeString().slice(0,5);const [hh,mm]=time.split(':').map(Number);const ts=new Date();ts.setHours(hh,mm,0,0);const existingTask=state.entries.find(e=>e.itemId===item.id&&entryDate(e)===key&&e.scheduleTime===scheduleTime&&e.status===status);if(existingTask){$('#logDialog').close();return toast('Allerede registreret')}
+  const e={id:uid(),itemId:item.id,itemName:item.name,type:item.type,ts:ts.getTime(),dose:$('#logDose').value.trim(),note:$('#logNote').value.trim(),status,scheduleTime,stockDelta:0};
+  if(status==='taken'){const per=number(item.stockPerUse),cur=number(item.stockCurrent);if(per!==null&&cur!==null){item.stockCurrent=Math.max(0,+(cur-per).toFixed(4));e.stockDelta=per}addXP(item.type)}
+  state.entries.unshift(e);save();$('#logDialog').close();toast(status==='taken'?`Registreret · +${XP_BY_TYPE[item.type]||0} XP`:'Markeret som sprunget');renderShell();
+}
+$('#logForm').addEventListener('submit',e=>{e.preventDefault();commitLog('taken')});$('#logSkip').addEventListener('click',()=>commitLog('skipped'));$('#logCancel').addEventListener('click',()=>$('#logDialog').close());
+function undoTask(item,scheduleTime){const key=today();const idx=state.entries.findIndex(e=>e.itemId===item.id&&entryDate(e)===key&&e.scheduleTime===scheduleTime&&(e.status==='taken'||e.status==='skipped'));if(idx<0)return;const e=state.entries[idx];if(e.stockDelta){item.stockCurrent=(number(item.stockCurrent)||0)+e.stockDelta}state.entries.splice(idx,1);save();toast('Registrering fjernet');renderShell()}
+function deleteEntry(id){const idx=state.entries.findIndex(e=>e.id===id);if(idx<0)return;const e=state.entries[idx];if(e.stockDelta&&e.itemId){const item=state.items.find(i=>i.id===e.itemId);if(item)item.stockCurrent=(number(item.stockCurrent)||0)+e.stockDelta}state.entries.splice(idx,1);save();renderJournal()}
+
+function openDetail(item){if(!item)return;const m=typeMeta(item.type),stock=stockInfo(item),hist=state.entries.filter(e=>e.itemId===item.id).slice(0,8);$('#detailContent').innerHTML=`<h3 style="margin-bottom:4px">${m.icon} ${esc(item.name)}</h3><div style="color:var(--muted);font-size:12px">${m.label}</div><div class="item-row" style="margin:14px 0">${item.dose?`<span class="pill">${esc(item.dose)}</span>`:''}<span class="pill">${esc(scheduleText(item))}</span>${stock?`<span class="pill ${stock.isLow?'low':''}">Lager ${stock.cur}${stock.unit?' '+esc(stock.unit):''}</span>`:''}</div>${item.notes?`<div class="item-note" style="font-size:13px">${esc(item.notes)}</div>`:''}<div class="sheet-actions"><button class="primary" id="detailLog">Log nu</button><button class="secondary" id="detailEdit">Redigér</button></div><div class="sheet-actions"><button class="secondary" id="calendarBtn">Kalenderpåmindelse</button><button class="danger" id="detailDelete">Slet</button></div><div class="divider"></div><div class="section-head" style="padding:0 0 8px"><h2 style="font-size:16px">Seneste</h2></div>${hist.length?hist.map(e=>`<div class="stock-row"><div><div class="stock-name">${e.status==='skipped'?'Sprunget over':'Registreret'}${e.dose?` · ${esc(e.dose)}`:''}</div><div class="stock-meta">${e.note?esc(e.note):'Ingen note'}</div></div><div class="stock-value">${fmtDateTime(e.ts)}</div></div>`).join(''):`<div class="item-note">Ingen historik endnu.</div>`}<div class="sheet-actions"><button class="secondary" id="detailClose">Luk</button></div>`;$('#detailDialog').showModal();$('#detailLog').addEventListener('click',()=>{$('#detailDialog').close();openLog(item,null)});$('#detailEdit').addEventListener('click',()=>{$('#detailDialog').close();openItem(item)});$('#detailDelete').addEventListener('click',()=>{if(confirm(`Slet ${item.name}? Historikken bevares.`)){state.items=state.items.filter(i=>i.id!==item.id);save();$('#detailDialog').close();renderShell()}});$('#detailClose').addEventListener('click',()=>$('#detailDialog').close());$('#calendarBtn').addEventListener('click',()=>exportICS(item))}
+
+function nextOccurrence(item,time){const now=new Date();for(let off=0;off<14;off++){const d=new Date(now);d.setDate(now.getDate()+off);if(!(item.days||[]).includes(d.getDay()))continue;const [h,m]=(time||'09:00').split(':').map(Number);d.setHours(h,m,0,0);if(d>now)return d}return new Date(now.getTime()+86400000)}
+function icsDate(d){const z=n=>String(n).padStart(2,'0');return `${d.getFullYear()}${z(d.getMonth()+1)}${z(d.getDate())}T${z(d.getHours())}${z(d.getMinutes())}00`}
+function exportICS(item){const times=item.times?.length?item.times:['09:00'];const allDays=(item.days||[]).length===7;let events='';times.forEach((time,idx)=>{const start=nextOccurrence(item,time),end=new Date(start.getTime()+10*60000);const rule=allDays?'RRULE:FREQ=DAILY':`RRULE:FREQ=WEEKLY;BYDAY=${(item.days||[]).map(d=>DAY_ICS[d]).join(',')}`;events+=`BEGIN:VEVENT\r\nUID:${item.id}-${idx}@opus\r\nDTSTAMP:${icsDate(new Date())}\r\nDTSTART:${icsDate(start)}\r\nDTEND:${icsDate(end)}\r\n${rule}\r\nSUMMARY:OPUS – ${item.name.replace(/[,;]/g,' ')}\r\nDESCRIPTION:${(item.dose||'').replace(/[,;]/g,' ')}\r\nBEGIN:VALARM\r\nTRIGGER:-PT5M\r\nACTION:DISPLAY\r\nDESCRIPTION:OPUS reminder\r\nEND:VALARM\r\nEND:VEVENT\r\n`});const content=`BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//OPUS//DA\r\nCALSCALE:GREGORIAN\r\n${events}END:VCALENDAR`;shareBlob(new Blob([content],{type:'text/calendar'}),`${item.name.replace(/[^a-z0-9æøå]+/gi,'-')}.ics`,'Kalenderpåmindelse')}
+
+async function initDB(){return new Promise((resolve,reject)=>{const r=indexedDB.open('opus-media',1);r.onupgradeneeded=()=>{if(!r.result.objectStoreNames.contains('photos'))r.result.createObjectStore('photos',{keyPath:'id'})};r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)})}
+async function getPhotos(){try{const db=await initDB();return await new Promise((resolve,reject)=>{const tx=db.transaction('photos','readonly'),rq=tx.objectStore('photos').getAll();rq.onsuccess=()=>resolve((rq.result||[]).sort((a,b)=>b.ts-a.ts));rq.onerror=()=>reject(rq.error)})}catch(e){return []}}
+async function putPhoto(p){const db=await initDB();return new Promise((resolve,reject)=>{const tx=db.transaction('photos','readwrite');tx.objectStore('photos').put(p);tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error)})}
+async function removePhoto(id){const db=await initDB();return new Promise((resolve,reject)=>{const tx=db.transaction('photos','readwrite');tx.objectStore('photos').delete(id);tx.oncomplete=resolve;tx.onerror=()=>reject(tx.error)})}
+function compressImage(file){return new Promise((resolve,reject)=>{const img=new Image(),url=URL.createObjectURL(file);img.onload=()=>{const max=1000,scale=Math.min(1,max/Math.max(img.width,img.height)),c=document.createElement('canvas');c.width=Math.round(img.width*scale);c.height=Math.round(img.height*scale);c.getContext('2d').drawImage(img,0,0,c.width,c.height);URL.revokeObjectURL(url);resolve(c.toDataURL('image/jpeg',.78))};img.onerror=reject;img.src=url})}
+$('#photoInput').addEventListener('change',e=>{const file=e.target.files?.[0];if(!file)return;pendingPhoto=file;$('#photoPreview').src=URL.createObjectURL(file);$('#photoNote').value='';$('#photoSkin').value=5;$('#photoSkinOut').textContent='5';$('#photoDialog').showModal();e.target.value=''});$('#photoSkin').addEventListener('input',e=>$('#photoSkinOut').textContent=e.target.value);$('#photoCancel').addEventListener('click',()=>{$('#photoDialog').close();pendingPhoto=null});$('#photoSave').addEventListener('click',async()=>{if(!pendingPhoto)return;try{const dataUrl=await compressImage(pendingPhoto);await putPhoto({id:uid(),ts:Date.now(),dataUrl,skin:+$('#photoSkin').value,note:$('#photoNote').value.trim()});$('#photoDialog').close();pendingPhoto=null;toast('Foto gemt');if(activeTab==='insights')renderPhotos()}catch(e){toast('Kunne ikke gemme foto')}});
+async function renderPhotos(){const area=$('#photosArea');if(!area)return;const photos=await getPhotos();area.innerHTML=photos.length?`<div class="photo-strip">${photos.map(p=>`<div class="photo"><img src="${p.dataUrl}" alt="Progress foto"><div class="photo-meta"><b>${fmtDate(p.ts)} · hud ${p.skin}/10</b><p>${esc(p.note||'Ingen note')}</p><button class="mini-btn danger-text" data-delphoto="${p.id}">Slet</button></div></div>`).join('')}</div>`:`<div class="empty">Ingen progress-fotos endnu. Brug samme lys og vinkel for mere sammenlignelige billeder.</div>`;$$('[data-delphoto]').forEach(b=>b.addEventListener('click',async()=>{if(confirm('Slet foto?')){await removePhoto(b.dataset.delphoto);renderPhotos()}}))}
+
+async function sha256(s){const data=new TextEncoder().encode(s);const hash=await crypto.subtle.digest('SHA-256',data);return Array.from(new Uint8Array(hash)).map(b=>b.toString(16).padStart(2,'0')).join('')}
+async function lockIfNeeded(force=false){if(!state.settings.pinHash)return;$('#lockOverlay').classList.add('show');$('#unlockPin').value='';$('#unlockError').textContent='';setTimeout(()=>$('#unlockPin').focus(),100)}
+$('#unlockBtn').addEventListener('click',async()=>{const v=$('#unlockPin').value;if(await sha256(v)===state.settings.pinHash){$('#lockOverlay').classList.remove('show');$('#unlockError').textContent=''}else{$('#unlockError').textContent='Forkert PIN';$('#unlockPin').value=''}});$('#unlockPin').addEventListener('keydown',e=>{if(e.key==='Enter')$('#unlockBtn').click()});
+document.addEventListener('visibilitychange',()=>{if(document.hidden)hiddenAt=Date.now();else if(hiddenAt&&Date.now()-hiddenAt>30000&&state.settings.pinHash)lockIfNeeded(true)});
+
+$('#settingsBtn').addEventListener('click',()=>{$('#userName').value=state.userName||'';$('#pinSet').value='';$('#settingsDialog').showModal()});$('#settingsClose').addEventListener('click',()=>$('#settingsDialog').close());$('#saveName').addEventListener('click',()=>{state.userName=$('#userName').value.trim();save();toast('Navn gemt');renderShell()});$('#setPin').addEventListener('click',async()=>{const p=$('#pinSet').value.trim();if(!/^\d{4}$/.test(p))return toast('PIN skal være 4 cifre');state.settings.pinHash=await sha256(p);save();$('#pinSet').value='';toast('PIN-lås aktiveret')});$('#removePin').addEventListener('click',()=>{state.settings.pinHash=null;save();toast('PIN-lås fjernet')});$('#resetBtn').addEventListener('click',async()=>{if(!confirm('Slet alle OPUS-data og fotos på denne installation?'))return;state=defaultState();save();const photos=await getPhotos();for(const p of photos)await removePhoto(p.id);$('#settingsDialog').close();renderShell();toast('Alt nulstillet')});
+
+async function shareBlob(blob,name,title='OPUS'){const file=new File([blob],name,{type:blob.type});try{if(navigator.canShare?.({files:[file]})){await navigator.share({files:[file],title});return}}catch(e){}const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),2000)}
+$('#exportBtn').addEventListener('click',async()=>{const photos=await getPhotos();const payload={exportedAt:new Date().toISOString(),state,photos};const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});await shareBlob(blob,`OPUS-backup-${today()}.json`,'OPUS backup')});$('#importBtn').addEventListener('click',()=>$('#importFile').click());$('#importFile').addEventListener('change',async e=>{const f=e.target.files?.[0];if(!f)return;try{const data=JSON.parse(await f.text());if(!data.state)throw new Error('invalid');state=normalizeState(data.state);save();if(Array.isArray(data.photos)){for(const p of data.photos)await putPhoto(p)}$('#settingsDialog').close();renderShell();toast('Backup importeret')}catch(err){toast('Ugyldig backup')}e.target.value=''});
+
+function installHint(){const standalone=window.navigator.standalone===true||window.matchMedia('(display-mode: standalone)').matches;const ios=/iPhone|iPad|iPod/.test(navigator.userAgent);if(ios&&!standalone&&!state.settings.hideInstall)$('#installHint').classList.add('show')}$('#hideInstall').addEventListener('click',()=>{state.settings.hideInstall=true;save();$('#installHint').classList.remove('show')});
+$$('#nav button').forEach(b=>b.addEventListener('click',()=>{activeTab=b.dataset.tab;renderShell()}));
+
+(async()=>{await load();installHint();renderShell();if(state.settings.pinHash)lockIfNeeded(true)})();
+})();
+</script>
+</body>
+</html>
